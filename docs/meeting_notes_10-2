@@ -1,0 +1,51 @@
+Technologies:
+    Git client -- https://git-scm.com/
+    	How to use git
+    	Manage commits
+    	Local repo vs remote
+
+    Love2D -- https://love2d.org/
+
+    Atom --
+    	Love2D configuration
+
+
+Aesthetic:
+    Why are we here?
+        What are we doing?
+        Why are we doing it?
+        Where do we come from?
+        Where are we going?
+        Why should I give a shit?
+
+    What else is happening?
+        Who else lives in this world?
+        Who else DOESN'T live in this world?
+        What are those other people doing?
+        Why does this dungeon exist?
+        What's at the bottom of it?
+        What's above it?
+        Why should I give a shit?
+
+    How does the looping work?
+        Cloning?
+        Reverse time?
+        Groundhog day?
+        Why is the looping happening? (different from how)
+
+
+Assignments:
+    Ben:
+        Basic movement in space (static vs dynamic)
+        Player collisions with walls (event handling?)
+        Camera tracking with player
+
+    Cam:
+        Character personality exploration and visual design (very rough) draft
+        Visual level design (very rough) draft + themes
+        Start to learn Git
+
+    Tim:
+        First pass at leitmotif for levels
+        Explore social media presence for marketing, research what other studios do
+        Start to learn Git
