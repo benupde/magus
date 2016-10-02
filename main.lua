@@ -1,27 +1,18 @@
-debug = true
-player = {x = 200, y = 710, img = nil, speed = 150}
-
-canShoot = true
-canShootTimerMax = 0.2
-canShootTimer = canShootTimerMax
-bulletImg = nil
-
-bullets = {}
-
+local dungeonGenerator = require("scripts.dungeon-generation.dungeonGen")
 function love.load(arg)
-    player.img = love.graphics.newImage('assets/plane.png')
-    bulletImg = love.graphics.newImage('assets/bullet.png')
+    dungeonGenerator.load(17, 17)
 end
 
 function love.update(dt)
     handleInput(dt)
-    updateBullets(dt)
 end
 
 function love.draw(dt)
-    love.graphics.draw(player.img, player.x, player.y)
-    for i, bullet in ipairs(bullets) do
-        love.graphics.draw(bullet.img, bullet.x, bullet.y)
+    d = dungeonGenerator.getDungeon()
+    for xind,xval in ipairs(d) do
+        for yind,yval in ipairs(xval) do
+            love.graphics.draw(dungeonGenerator.getTileset(), dungeonGenerator.getPassableQuad(yval.passable), xind*32, yind*32)
+        end
     end
 end
 
@@ -29,37 +20,26 @@ function handleInput(dt)
     if love.keyboard.isDown('escape') then
         love.event.push('quit')
     end
-
     if love.keyboard.isDown('left') then
-        if player.x > 0 then
-            player.x = player.x - (player.speed * dt)
-        end
     end
     if love.keyboard.isDown('right') then
-        if player.x < (love.graphics.getWidth() - player.img:getWidth()) then
-            player.x = player.x + (player.speed * dt)
+    end
+    if love.keyboard.isDown('p') then
+        if(not love.window.getFullscreen()) then
+            love.window.setMode(800, 600, {fullscreen=true, fullscreentype='exclusive'})
+        else
+            love.window.setMode(800, 600, {fullscreen=false, fullscreentype='exclusive'})
         end
     end
-
-    if love.keyboard.isDown('space', 'rctrl', 'lctrl', 'ctrl') and canShoot then
-    	newBullet = { x = player.x + (player.img:getWidth()/2) - 3, y = player.y, img = bulletImg, speed = 250 }
-    	table.insert(bullets, newBullet)
-        newBullet = { x = player.x + (player.img:getWidth()/2) - 25, y = player.y, img = bulletImg, speed = 250 }
-    	table.insert(bullets, newBullet)
-    	canShoot = false
-    	canShootTimer = canShootTimerMax
+    if love.keyboard.isDown('g') then
+        dungeonGenerator.gen(17, 17)
     end
 end
 
-function updateBullets(dt)
-    canShootTimer = canShootTimer - (1 * dt)
-    if canShootTimer < 0 then
-      canShoot = true
-    end
-    for i, bullet in ipairs(bullets) do
-        bullet.y = bullet.y - (bullet.speed * dt)
-        if bullet.y < 0 then
-            table.remove(bullets, i)
-        end
-    end
+function updateProjectiles(dt)
+
+end
+
+function updateEnemies(dt)
+
 end
