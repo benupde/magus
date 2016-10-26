@@ -1,0 +1,8 @@
+For each pass through the dungeon the character changes but not the world
+Information is revealed to both player and character, influencing their decisions
+
+-- JOURNAL --
+Facilitates the loop
+Moment player picks up journal is benchmark for loop
+Contains all of player's spells, portal codes, etc
+Everything that persists persists in book

@@ -1,4 +1,5 @@
 local dungeonGenerator = require("scripts.dungeon-generation.dungeonGen")
+local queue = require("scripts.utils.queue")
 function love.load(arg)
     dungeonGenerator.load(17, 17)
 end

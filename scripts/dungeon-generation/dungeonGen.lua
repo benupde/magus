@@ -2,7 +2,7 @@ local dungeon = nil
 local passableQuad = nil
 local impasssableQuad = nil
 local tileset = nil
-function gen(xmax, ymax)
+local function gen(xmax, ymax)
     dungeon = {}
     for i=1, xmax do
         dungeon[i] = {}
@@ -66,18 +66,18 @@ function getNearWalls(radius, i, j)
     return wallCount
 end
 
-function load(xmax, ymax)
+local function load(xmax, ymax)
     tileset = love.graphics.newImage('assets/floorset.png')
     passableQuad = love.graphics.newQuad(0, 0, 32, 32, 65, 32)
     impasssableQuad = love.graphics.newQuad(33, 0, 32, 32, 65, 32)
     gen(xmax, ymax)
 end
 
-function getDungeon()
+local function getDungeon()
     return dungeon
 end
 
-function getPassableQuad(passable)
+local function getPassableQuad(passable)
     if passable then
         return passableQuad
     else
@@ -85,7 +85,7 @@ function getPassableQuad(passable)
     end
 end
 
-function getTileset()
+local function getTileset()
     return tileset
 end
 
