@@ -6,9 +6,11 @@ function register(handler)
     if handlers[eventType] == nil then
         handlers[eventType] = require("../utils.queue")
     end
+    handlers[eventType].pushLeft(handler)
 end
 
 function notify(event)
+
 end
 
 function raise(event)
